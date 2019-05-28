@@ -12,10 +12,15 @@ import { SignedOut, createRootNavigator } from './Router.js';
 
 export default class AppScreen extends React.Component {
 
-  state = {
-    signedIn: false, 
-    checkedSignIn: false
-  };
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      signedIn: true, 
+      checkedSignIn: false
+    };
+
+  }
 
   render()
   {

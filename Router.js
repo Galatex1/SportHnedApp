@@ -3,6 +3,7 @@ import {createSwitchNavigator, createStackNavigator, createAppContainer} from 'r
 import LoginScreen from './components/LoginScreen/LoginScreen.js'
 import SignupScreen from './components/SignupScreen/SignupScreen.js'
 import MainScreen from './components/Menu/Menu.js'
+import FriendsScreen from './components/FriendsScreen/FriendsScreen.js';
 
 export const SignedOut = createStackNavigator({
     Login: {
@@ -25,16 +26,16 @@ export const SignedOut = createStackNavigator({
 export const createRootNavigator = (signedIn = false) =>{ return createSwitchNavigator(
         {
             SignedIn: {
-                screen: MainScreen,
+                screen: MainScreen,  
                 navigationOptions: ({navigation}) => ({
-                    title: "LogIn",
+                    title: "Home Screen",
                     header: null,
                 })
             },
             SignedOut: {
                 screen: SignedOut,
                 navigationOptions: ({navigation}) => ({
-                    title: "SignUp",
+                    title: "Login Screen",
                     header: null,
                 })
             }

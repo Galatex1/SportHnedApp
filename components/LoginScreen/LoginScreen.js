@@ -6,7 +6,6 @@ export default class LoginScreen extends React.Component{
 
     constructor(props) {
         super(props)
-    
         this.state = {
           email: "",
           password: "",
@@ -63,7 +62,13 @@ export default class LoginScreen extends React.Component{
       }
       return fetch('https://www.sporthned.cz/api/user/login', data)
               .then(response => response.json())  // promise
-              .then(json => {this.setState({ response: json.message }); console.log(json.message)})
+              .then(json => {
+                this.setState({ response: json.message }); 
+                console.log(json.message);
+                if(json.error == false)
+                this.props.navigation.navigate("SignedIn");
+          
+              })
               .catch((err)=>{console.log(err)})
     
   }
