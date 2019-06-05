@@ -41,6 +41,7 @@ export default class FriendsScreen extends React.Component {
                 var diff_hours = difference.getHours();
                 var diff_mins = difference.getMinutes();
 
+
                 return (
                   <ListItem            
                     key={i}
@@ -51,11 +52,12 @@ export default class FriendsScreen extends React.Component {
                     topDivider
                     chevron
                     subtitle = {isNaN(diff_hours) ? "Naposledy online: Nikdy" : "Naposledy online: Pred "+diff_hours+" hodinami "+diff_mins+" minutami"}
+                    onPress= {()=>{this.props.navigation.navigate("Sport")}}
                   />
                 );
               })
             }
-          </ScrollView>
+          </ScrollView>  
         </View>  
       </View>
     );
@@ -80,6 +82,8 @@ export default class FriendsScreen extends React.Component {
               .then(json => {
                 //console.log(json);
                 this.setState({ users: json.users }); 
+
+
                 
           
               })
@@ -95,7 +99,8 @@ const styles = StyleSheet.create({
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
-  },
+      
+    },
   bottom: {
       flex: 1,
       justifyContent: 'flex-end',   

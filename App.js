@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import { Constants } from 'expo';
-
+import { Notifications } from 'expo';
 import MainScreen from './components/Menu/Menu.js'
 import LoginScreen from './components/LoginScreen/LoginScreen.js'
 import SignupScreen from './components/SignupScreen/SignupScreen.js'
+
 //import SignedOut  from './Router.js'
 
 import {createStackNavigator, createAppContainer} from 'react-navigation';
@@ -16,8 +16,9 @@ export default class AppScreen extends React.Component {
     super(props)
 
     this.state = {
-      signedIn: true, 
-      checkedSignIn: false
+      signedIn: false, 
+      checkedSignIn: false,
+      notifications : []
     };
 
   }
@@ -26,7 +27,8 @@ export default class AppScreen extends React.Component {
   {
 
     const App = createAppContainer( createRootNavigator(this.state.signedIn));
-    return <App/>;
+    return <App />; 
+
   }
 }
     
