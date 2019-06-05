@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Button, Text, View, StyleSheet, TextInput } from 'react-native';
+import registerForPushNotificationsAsync from '../NotificationsScreen/PushNotifications.js';
 
 
 export default class LoginScreen extends React.Component{
@@ -66,7 +67,10 @@ export default class LoginScreen extends React.Component{
                 this.setState({ response: json.message }); 
                 console.log(json.message);
                 if(json.error == false)
-                this.props.navigation.navigate("SignedIn");
+                {
+                  this.props.navigation.navigate("SignedIn");
+                  registerForPushNotificationsAsync(this.state.email);
+                }
           
               })
               .catch((err)=>{console.log(err)})
