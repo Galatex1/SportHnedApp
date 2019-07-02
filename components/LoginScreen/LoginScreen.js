@@ -17,7 +17,7 @@ export default class LoginScreen extends React.Component{
   render() {
     return (
   <View style={styles.hlavni}>
-  
+
         <View style={styles.middle}> 
             <Text>Přihlašte se!</Text>
             <Text>{this.state.response}</Text>
