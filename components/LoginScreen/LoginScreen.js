@@ -78,9 +78,10 @@ export default class LoginScreen extends React.Component{
                 {
                   this.props.navigation.navigate("SignedIn");
                   registerForPushNotificationsAsync(this.state.email).then((res)=>{
+                    console.log(res);
                       AsyncStorage.multiSet([
-                          ['token', res.user.token],
-                          ['userID', res.user.id]
+                          ["token", res.user.token],
+                          ["userID", toString(res.user.id)]
                       ]);
                   })
 

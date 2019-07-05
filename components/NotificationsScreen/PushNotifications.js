@@ -36,5 +36,5 @@ export default async function registerForPushNotificationsAsync(email) {
         token: token,
         email: email,     
     }),
-  }).then(res => console.log(res));
+  }).then(response => response.json());
 }
