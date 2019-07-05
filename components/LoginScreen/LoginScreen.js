@@ -20,8 +20,8 @@ export default class LoginScreen extends React.Component{
         <View style={styles.middle}> 
             <Text>Přihlašte se!</Text>
             <Text>{this.state.response}</Text>
-            <TextInput placeholder="Email" placeholderColor="#8b8e93" style={styles.textInput} onChangeText={(text) => this.setState({email: text})} value={this.state.email} />
-            <TextInput placeholder="Heslo" placeholderColor="#8b8e93" style={styles.textInput} secureTextEntry={true} onChangeText={(text) => this.setState({password: text})} value={this.state.password} />
+            <TextInput placeholder="Email" placeholderColor="#78849E" style={styles.textInput} onChangeText={(text) => this.setState({email: text})} value={this.state.email} />
+            <TextInput placeholder="Heslo" placeholderColor="#78849E" style={styles.textInput} secureTextEntry={true} onChangeText={(text) => this.setState({password: text})} value={this.state.password} />
             <View style={{margin:10}}>
                 <Button
                     title="Přihlásit se"
