@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Text, View, StyleSheet, TextInput } from 'react-native';
+import { Button, Text, View, StyleSheet, TextInput, AsyncStorage } from 'react-native';
 import registerForPushNotificationsAsync from '../NotificationsScreen/PushNotifications.js';
 
 
@@ -14,7 +14,15 @@ export default class LoginScreen extends React.Component{
         }
       }
 
-  render() {
+      componentDidMount() { AsyncStorage.multiGet(['token', 'userID']).then((data)=>{
+          if (data[0][1])
+          console.log("success");
+          else
+          console.log("error");
+      })
+      }
+
+    render() {
     return (
   <View style={styles.hlavni}>
 
@@ -69,7 +77,13 @@ export default class LoginScreen extends React.Component{
                 if(json.error == false)
                 {
                   this.props.navigation.navigate("SignedIn");
-                  registerForPushNotificationsAsync(this.state.email);
+                  registerForPushNotificationsAsync(this.state.email).then((res)=>{
+                      AsyncStorage.multiSet([
+                          ['token', res.user.token],
+                          ['userID', res.user.id]
+                      ]);
+                  })
+
                 }
           
               })
