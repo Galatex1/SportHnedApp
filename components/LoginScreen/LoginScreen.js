@@ -14,9 +14,31 @@ export default class LoginScreen extends React.Component{
         }
       }
 
-      componentDidMount() { AsyncStorage.multiGet(['token', 'userID']).then((data)=>{
-          if (data[0][1])
-          console.log("success");
+      componentDidMount() { AsyncStorage.multiGet(['token', 'userID']).then((data)=> {
+          if (data[0][1]) {
+              let tokenlogin = {
+                  method: 'POST',
+                  body: JSON.stringify({
+                      token: data[0][1],
+                      userID : data[1][1]
+                  }),
+                  headers: {
+                      'Accept':       'application/json',
+                      'Content-Type': 'application/json',
+                  }
+              }
+              return fetch('https://www.sporthned.cz/api/user/tokenlogin', tokenlogin)
+                  .then(response => response.json())  // promise
+                  .then(json => {
+                      this.setState({ response: json.message });
+                      console.log(json.message);
+                      if(json.error == false)
+                      {
+                          this.props.navigation.navigate("SignedIn");
+                      }
+                  })
+                  .catch((err)=>{console.log(err)})
+          }
           else
           console.log("error");
       })
