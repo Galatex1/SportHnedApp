@@ -31,8 +31,7 @@ export default class LoginScreen extends React.Component{
                   .then(response => response.json())  // promise
                   .then(json => {
                       this.setState({ response: json.message });
-                      console.log(json.message);
-                      if(json.error == false)
+                      if(json.error == false && json.user.id != null && json.user.token != null)
                       {
                           this.props.navigation.navigate("SignedIn");
                       }
@@ -98,14 +97,13 @@ export default class LoginScreen extends React.Component{
                 console.log(json.message);
                 if(json.error == false)
                 {
+                  console.log(json.user.id);
+                  AsyncStorage.multiSet([
+                    ["token", json.user.token],
+                    ["userID", json.user.id.toString()] 
+                  ]);
+                  registerForPushNotificationsAsync(this.state.email);
                   this.props.navigation.navigate("SignedIn");
-                  registerForPushNotificationsAsync(this.state.email).then((res)=>{
-                    console.log(res);
-                      AsyncStorage.multiSet([
-                          ["token", res.user.token],
-                          ["userID", toString(res.user.id)]
-                      ]);
-                  })
 
                 }
           
