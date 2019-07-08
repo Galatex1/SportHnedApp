@@ -27,6 +27,7 @@ export default class LoginScreen extends React.Component {
       <TextInput placeholder="Příjmení" placeholderColor="#8b8e93" style={styles.textInput} onChangeText={(text) => this.setState({lastname: text})} value={this.state.lastname} />
       <TextInput placeholder="Email" placeholderColor="#8b8e93" style={styles.textInput} onChangeText={(text) => this.setState({email: text})} value={this.state.email} />
       <TextInput placeholder="Heslo" placeholderColor="#8b8e93" style={styles.textInput} onChangeText={(text) => this.setState({password: text})} value={this.state.password} secureTextEntry={true}/>
+      <View style={{margin:10}}>
       <Button
         title="Registrovat"
         type="solid"
@@ -34,6 +35,15 @@ export default class LoginScreen extends React.Component {
         backgroundColor="#fff"
         onPress={ () => this.onSignUp() }
       />
+      </View>
+        <Button
+            title="Přihlásit se"
+            type="solid"
+            // color= "#f00"
+            textStyle={{ color: "#bcbec1" }}
+            backgroundColor="transparent"
+            onPress={ () => this.props.navigation.navigate("Login") }
+        />
     </View>
     <View style={styles.bottom}>
       <Text> © SportHned 2019 - Všechna práva vyhrazena </Text>

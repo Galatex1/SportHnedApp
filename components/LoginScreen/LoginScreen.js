@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Text, View, StyleSheet, TextInput } from 'react-native';
+import { Button, Text, View, StyleSheet, TextInput, AsyncStorage } from 'react-native';
 import registerForPushNotificationsAsync from '../NotificationsScreen/PushNotifications.js';
 
 
@@ -14,10 +14,39 @@ export default class LoginScreen extends React.Component{
         }
       }
 
-  render() {
+      componentDidMount() { AsyncStorage.multiGet(['token', 'userID']).then((data)=> {
+          if (data[0][1]) {
+              let tokenlogin = {
+                  method: 'POST',
+                  body: JSON.stringify({
+                      token: data[0][1],
+                      userID : data[1][1]
+                  }),
+                  headers: {
+                      'Accept':       'application/json',
+                      'Content-Type': 'application/json',
+                  }
+              }
+              return fetch('https://www.sporthned.cz/api/user/tokenlogin', tokenlogin)
+                  .then(response => response.json())  // promise
+                  .then(json => {
+                      this.setState({ response: json.message });
+                      if(json.error == false && json.user.id != null && json.user.token != null)
+                      {
+                          this.props.navigation.navigate("SignedIn");
+                      }
+                  })
+                  .catch((err)=>{console.log(err)})
+          }
+          else
+          console.log("error");
+      })
+      }
+
+    render() {
     return (
   <View style={styles.hlavni}>
-  
+
         <View style={styles.middle}> 
             <Text>Přihlašte se!</Text>
             <Text>{this.state.response}</Text>
@@ -68,8 +97,14 @@ export default class LoginScreen extends React.Component{
                 console.log(json.message);
                 if(json.error == false)
                 {
-                  this.props.navigation.navigate("SignedIn");
+                  console.log(json.user.id);
+                  AsyncStorage.multiSet([
+                    ["token", json.user.token],
+                    ["userID", json.user.id.toString()] 
+                  ]);
                   registerForPushNotificationsAsync(this.state.email);
+                  this.props.navigation.navigate("SignedIn");
+
                 }
           
               })
