@@ -81,7 +81,7 @@ export default class ChatScreen extends React.Component {
         {/* //     <DismissKeyboard style={{flex: 1 }}> */}
                 <View style={styles.container}>
                     <Header
-                    leftComponent={{  icon: 'chevron-left', size: 35,color: '#8cde23'}}
+                    leftComponent={{  icon: 'chevron-left', size: 35,color: '#8cde23', onPress: ()=>{this.props.navigation.goBack();}}}
                     centerComponent={<View style={{flex: 1, flexDirection: "row", alignItems: "center"}}><Avatar rounded title={user.firstname.toUpperCase()[0]+user.lastname.toUpperCase()[0]} /><Text style = {{ color: '#000', fontSize: 14, marginLeft: 5 }}>{user.firstname+" "+user.lastname}</Text></View>}
                     rightComponent={{ size: 35, icon: 'menu', color: '#f00' }}
                     backgroundColor="white"
