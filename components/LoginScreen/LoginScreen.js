@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Text, View, StyleSheet, TextInput, AsyncStorage, TouchableOpacity } from 'react-native';
+import { Button, Text, View, StyleSheet, TextInput, AsyncStorage, TouchableOpacity, ImageBackground } from 'react-native';
 import registerForPushNotificationsAsync from '../NotificationsScreen/PushNotifications.js';
 
 
@@ -45,6 +45,7 @@ export default class LoginScreen extends React.Component{
 
     render() {
     return (
+        <ImageBackground source={require('../../assets/splash.png')} style={{width: '100%', height: '100%'}}>
   <View style={styles.hlavni}>
 
         <View style={styles.middle}> 
@@ -53,22 +54,6 @@ export default class LoginScreen extends React.Component{
             <TextInput placeholder="Email" placeholderColor="#78849E" style={styles.textInput} onChangeText={(text) => this.setState({email: text})} value={this.state.email} />
             <TextInput placeholder="Heslo" placeholderColor="#78849E" style={styles.textInput} secureTextEntry={true} onChangeText={(text) => this.setState({password: text})} value={this.state.password} />
             <View style={{margin:10}}>
-                <Button
-                    title="Přihlásit se"
-                    type="solid"
-                    color= "#f00"
-                    backgroundColor="#fff"
-                    onPress={ () => this.onLogin() }
-                />
-            </View>
-            <Button
-                title="Registrovat"
-                type="solid"
-                // color= "#f00"
-                textStyle={{ color: "#bcbec1" }}
-                backgroundColor="transparent"
-                onPress={() => this.props.navigation.navigate("Signup")}
-            />
             <TouchableOpacity
                 style={styles.container}
                 onPress={this.props.onPress}
@@ -85,11 +70,13 @@ export default class LoginScreen extends React.Component{
                     Registrace
                 </Text>
             </TouchableOpacity>
+            </View>
         </View>
         <View style={styles.bottom}>
             <Text> © SportHned 2019 - Všechna práva vyhrazena </Text>
         </View>
     </View>
+        </ImageBackground>
     );
   }
 
@@ -166,7 +153,7 @@ textInput:{
     container: {
         backgroundColor: '#e2dedb',
         alignItems: 'center',
-        borderRadius: 15,
+        borderRadius: 10,
         padding: 7,
         paddingLeft: 10,
         marginLeft: 15,
