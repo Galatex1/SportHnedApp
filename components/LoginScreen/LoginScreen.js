@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Text, View, StyleSheet, TextInput, AsyncStorage } from 'react-native';
+import { Button, Text, View, StyleSheet, TextInput, AsyncStorage, TouchableOpacity } from 'react-native';
 import registerForPushNotificationsAsync from '../NotificationsScreen/PushNotifications.js';
 
 
@@ -69,6 +69,22 @@ export default class LoginScreen extends React.Component{
                 backgroundColor="transparent"
                 onPress={() => this.props.navigation.navigate("Signup")}
             />
+            <TouchableOpacity
+                style={styles.container}
+                onPress={this.props.onPress}
+            >
+                <Text style={styles.text}>
+                    Login
+                </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+                style={styles.container}
+                onPress={this.props.onPress}
+            >
+                <Text style={styles.text}>
+                    Registrace
+                </Text>
+            </TouchableOpacity>
         </View>
         <View style={styles.bottom}>
             <Text> © SportHned 2019 - Všechna práva vyhrazena </Text>
@@ -146,5 +162,20 @@ textInput:{
   marginRight: 15,
   marginTop: 5,
   marginBottom: 5,
-  }
+  },
+    container: {
+        backgroundColor: '#e2dedb',
+        alignItems: 'center',
+        borderRadius: 15,
+        padding: 7,
+        paddingLeft: 10,
+        marginLeft: 15,
+        marginRight: 15,
+        marginTop: 10,
+        width: 165,
+    },
+    text: {
+        fontSize: 20,
+        fontWeight: 'bold',
+    }
 });
