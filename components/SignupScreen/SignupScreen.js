@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Text, View, StyleSheet, TextInput } from 'react-native';
+import { Button, Text, View, StyleSheet, TextInput, ImageBackground } from 'react-native';
 
 
 export default class LoginScreen extends React.Component {
@@ -18,7 +18,7 @@ export default class LoginScreen extends React.Component {
 
   render() {
     return (
-
+        <ImageBackground source={require('../../assets/Gratest2.png')} style={{width: '100%', height: '100%'}}>
   <View style={styles.hlavni}>
     <View style={styles.middle}> 
       <Text>Registrace</Text>
@@ -49,6 +49,7 @@ export default class LoginScreen extends React.Component {
       <Text> © SportHned 2019 - Všechna práva vyhrazena </Text>
     </View>
   </View>
+        </ImageBackground>
     );
   }
 
