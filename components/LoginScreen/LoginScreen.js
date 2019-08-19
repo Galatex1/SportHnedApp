@@ -45,26 +45,26 @@ export default class LoginScreen extends React.Component{
 
     render() {
     return (
-        <ImageBackground source={require('../../assets/splash.png')} style={{width: '100%', height: '100%'}}>
+        <ImageBackground source={require('../../assets/Gratest2.png')} style={{width: '100%', height: '100%'}}>
   <View style={styles.hlavni}>
 
         <View style={styles.middle}> 
-            <Text>Přihlašte se!</Text>
+            <Text style={styles.topText}>Přihlaste se!</Text>
             <Text>{this.state.response}</Text>
             <TextInput placeholder="Email" placeholderColor="#78849E" style={styles.textInput} onChangeText={(text) => this.setState({email: text})} value={this.state.email} />
             <TextInput placeholder="Heslo" placeholderColor="#78849E" style={styles.textInput} secureTextEntry={true} onChangeText={(text) => this.setState({password: text})} value={this.state.password} />
             <View style={{margin:10}}>
             <TouchableOpacity
                 style={styles.container}
-                onPress={this.props.onPress}
+                onPress={() => this.onLogin()}
             >
                 <Text style={styles.text}>
-                    Login
+                    Přihlášení
                 </Text>
             </TouchableOpacity>
             <TouchableOpacity
                 style={styles.container}
-                onPress={this.props.onPress}
+                onPress={() => this.props.navigation.navigate("Signup")}
             >
                 <Text style={styles.text}>
                     Registrace
@@ -161,8 +161,12 @@ textInput:{
         marginTop: 10,
         width: 165,
     },
-    text: {
+    topText: {
         fontSize: 20,
+        fontWeight: 'bold',
+    },
+    text: {
+        fontSize: 15,
         fontWeight: 'bold',
     }
 });
