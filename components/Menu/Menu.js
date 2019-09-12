@@ -69,69 +69,28 @@ const getTabBarIcon = (navigation, focused, tintColor) => {
 };
 
 
+const MainScreen = createBottomTabNavigator(
+      {
+        Home: { screen: HomeScreen },
+        Notifications: { screen: NotificationsScreen },
+        Sport: { screen: SportScreen },
+        Friends: { screen: FriendsScreen },
+        Settings: { screen: SettingsScreen },
+      },
+      {
+        defaultNavigationOptions: ({ navigation }) => ({
+          tabBarIcon: ({ focused, tintColor }) =>
+            getTabBarIcon(navigation, focused, tintColor),
+        }),
+        tabBarOptions: {
+          activeTintColor: '#ffffff',
+          inactiveTintColor: '#000000',
+          style: {
+            backgroundColor: '#8CDE23',
+          },
+        },
+        
+      }
+    );
 
-export default class MainScreen extends React.Component {
-
-  constructor(props) {
-    super(props)
-
-    this.state = {
-        notifications : Notify.getNotifications()
-    };
-
-  }
-
-  componentDidMount() {
-    //registerForPushNotificationsAsync();
-
-    // Handle notifications that are received or selected while the app
-    // is open. If the app was closed and then opened by tapping the
-    // notification (rather than just tapping the app icon to open it),
-    // this function will fire on the next tick after the app starts
-    // with the notification data.
-    this._notificationSubscription = Notifications.addListener(this._handleNotification);
-  }
-
-  _handleNotification = (notification) => {
-    Notify.addNotification(notification);
-    this.setState({update: true});
-  };
-
-  update()
-  {
-    this.setState({update: true});
-  }
-
-  render()
-  {
-
-    const MainScreen = createAppContainer(
-                          createBottomTabNavigator(
-                            {
-                              Home: { screen: HomeScreen },
-                              Notifications: { screen: NotificationsScreen },
-                              Sport: { screen: SportScreen },
-                              Friends: { screen: FriendsScreen },
-                              Settings: { screen: SettingsScreen },
-                            },
-                            {
-                              defaultNavigationOptions: ({ navigation }) => ({
-                                tabBarIcon: ({ focused, tintColor }) =>
-                                  getTabBarIcon(navigation, focused, tintColor),
-                              }),
-                              tabBarOptions: {
-                                activeTintColor: '#ffffff',
-                                inactiveTintColor: '#000000',
-                                style: {
-                                  backgroundColor: '#8CDE23',
-                                },
-                              },
-                              
-                            }
-                          )
-                        );
-
-    return <MainScreen/>; 
-
-  }
-}
+export default MainScreen;
