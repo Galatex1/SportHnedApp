@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Text, View, StyleSheet, TextInput } from 'react-native';
+import {Button, Text, View, StyleSheet, TextInput, ImageBackground, TouchableOpacity} from 'react-native';
 
 
 export default class LoginScreen extends React.Component {
@@ -18,7 +18,7 @@ export default class LoginScreen extends React.Component {
 
   render() {
     return (
-
+        <ImageBackground source={require('../../assets/Gratest2.png')} style={{width: '100%', height: '100%'}}>
   <View style={styles.hlavni}>
     <View style={styles.middle}> 
       <Text>Registrace</Text>
@@ -27,28 +27,33 @@ export default class LoginScreen extends React.Component {
       <TextInput placeholder="Příjmení" placeholderColor="#8b8e93" style={styles.textInput} onChangeText={(text) => this.setState({lastname: text})} value={this.state.lastname} />
       <TextInput placeholder="Email" placeholderColor="#8b8e93" style={styles.textInput} onChangeText={(text) => this.setState({email: text})} value={this.state.email} />
       <TextInput placeholder="Heslo" placeholderColor="#8b8e93" style={styles.textInput} onChangeText={(text) => this.setState({password: text})} value={this.state.password} secureTextEntry={true}/>
+
       <View style={{margin:10}}>
-      <Button
-        title="Registrovat"
-        type="solid"
-        color= "#f00"
-        backgroundColor="#fff"
-        onPress={ () => this.onSignUp() }
-      />
-      </View>
-        <Button
-            title="Přihlásit se"
-            type="solid"
-            // color= "#f00"
-            textStyle={{ color: "#bcbec1" }}
-            backgroundColor="transparent"
-            onPress={ () => this.props.navigation.navigate("Login") }
-        />
+
+      <TouchableOpacity
+          style={styles.container}
+          onPress={ () => this.onSignUp() }
+      >
+        <Text style={styles.text}>
+          Registrovat
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+          style={styles.container}
+          onPress={() => this.props.navigation.navigate("Login")}
+      >
+        <Text style={styles.text}>
+          Přihlásit se
+        </Text>
+      </TouchableOpacity>
     </View>
+    </View>
+
     <View style={styles.bottom}>
       <Text> © SportHned 2019 - Všechna práva vyhrazena </Text>
     </View>
   </View>
+        </ImageBackground>
     );
   }
 
@@ -109,5 +114,24 @@ textInput:{
   marginRight: 15,
   marginTop: 5,
   marginBottom: 5,
+  },
+  container: {
+    backgroundColor: '#e2dedb',
+    alignItems: 'center',
+    borderRadius: 10,
+    padding: 7,
+    paddingLeft: 10,
+    marginLeft: 15,
+    marginRight: 15,
+    marginTop: 10,
+    width: 165,
+  },
+  topText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  text: {
+    fontSize: 15,
+    fontWeight: 'bold',
   }
 });
