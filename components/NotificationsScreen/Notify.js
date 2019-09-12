@@ -1,9 +1,9 @@
+import {User} from  "../LoginScreen/User"
+
 export default class Notify {
     static notifications = [];
-    static currentUser = {
-        id : 0,
-        email : "",      
-    }
+    static currentUser = new User();
+
 
     static getNotifications() {
         return Notify.notifications;

@@ -1,5 +1,6 @@
 import React from 'react';
 import {Button, Text, View, AsyncStorage, TextInput, TouchableOpacity, StyleSheet} from 'react-native';
+import Notify from "../NotificationsScreen/Notify.js"
 import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
 
 export default class SettingsScreen extends React.Component {
@@ -8,6 +9,7 @@ export default class SettingsScreen extends React.Component {
         <View style={styles.hlavni}>
           <View style={styles.middle}>
             <View style={{margin:10}}>
+                <Text>{Notify.currentUser.surname}</Text>
               <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 <Button
                     title="Odhlásit se"

@@ -1,27 +1,29 @@
-export default class User {
-    static CurrentUser = {
-        id: 0,
-        Name : "",
-        Surname : "",
-        Email: "",
-    }
-    static getUserid()
+export class User {
+
+    constructor() {};
+
+    id = 0
+    name = ""
+    surname = ""
+    email = ""
+
+    getUserid()
     {
-        return User.CurrentUser.id;
+        return this.id;
     }
 
-    static getUserName()
+    getUserName()
     {
-        return User.CurrentUser.Name;
+        return this.name;
     }
 
-    static getUserSurname()
+    getUserSurname()
     {
-        return User.CurrentUser.Surname;
+        return this.surname;
     }
 
-    static getUserEmail()
+    getUserEmail()
     {
-        return User.CurrentUser.Email;
+        return this.email;
     }
 }
