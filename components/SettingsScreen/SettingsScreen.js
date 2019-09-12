@@ -25,7 +25,7 @@ export default class SettingsScreen extends React.Component {
 
   async onLogout() {
     try {
-      AsyncStorage.getItem('token');
+      //AsyncStorage.getItem('token');
       AsyncStorage.removeItem('token');
       this.props.navigation.navigate("SignedOut"); // nefunguje navigace do SignedOut
     } catch (error) {
