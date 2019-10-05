@@ -142,7 +142,7 @@ export default class ChatScreen extends React.Component {
        
       container: {
         flex: 1,
-        paddingTop: Constants.statusBarHeight,
+        paddingTop: 5,
         backgroundColor: 'white',
       }, 
       containterInput: {
