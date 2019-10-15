@@ -1,7 +1,8 @@
 import React from 'react';
 import {Button, Text, View, AsyncStorage, TextInput, TouchableOpacity, StyleSheet, Image} from 'react-native';
 import Notify from "../NotificationsScreen/Notify.js"
-import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
+
+/*Přidat info, popis do current useru + backendu*/
 
 export default class SettingsScreen extends React.Component {
   render() {
@@ -12,8 +13,8 @@ export default class SettingsScreen extends React.Component {
           <View style={styles.body}>
             <View style={styles.bodyContent}>
               <Text style={styles.name}>{Notify.currentUser.name} {Notify.currentUser.surname}</Text>
-              <Text style={styles.info}>Fotbal / Běh</Text>
-              <Text style={styles.description}>Popis</Text>
+              <Text style={styles.info}>{Notify.currentUser.info}</Text>
+              <Text style={styles.description}>{Notify.currentUser.description}</Text>
               <TouchableOpacity style={styles.buttonContainer} onPress={ () => this.onLogout() }>
                 <Text>Odhlásit se</Text>
               </TouchableOpacity>

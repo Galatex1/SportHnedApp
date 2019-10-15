@@ -4,6 +4,8 @@ export default class User {
     name = ""
     surname = ""
     email = ""
+    info = ""
+    description = ""
 
     constructor(_id, _name, _surname, _email) {
         this.id = _id;
@@ -44,5 +46,15 @@ export default class User {
     getUserEmail()
     {
         return this.email;
+    }
+
+    getUserInfo()
+    {
+        return this.info;
+    }
+
+    getUserDescription()
+    {
+        return this.description;
     }
 }
