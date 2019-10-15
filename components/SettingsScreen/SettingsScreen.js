@@ -47,8 +47,8 @@ const styles = StyleSheet.create({
     borderColor: "grey",
     marginBottom: 10,
     position: 'absolute',
+    alignSelf:'center',
     marginTop: 80,
-    marginLeft: 20
   },
   body:{
     marginTop: 40,
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   name:{
     fontSize:28,
     color: "#696969",
-    fontWeight: "600"
+    fontWeight: "600",
   },
   info:{
     fontSize:16,
