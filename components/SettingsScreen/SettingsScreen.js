@@ -9,8 +9,9 @@ export default class SettingsScreen extends React.Component {
         <View style={styles.hlavni}>
           <View style={styles.middle}>
             <View style={{margin:10}}>
-                <Text>{Notify.currentUser.surname}</Text>
               <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <Text>{Notify.currentUser.surname}</Text>
+                <Text>{Notify.currentUser.name}</Text>
                 <Button
                     title="Odhlásit se"
                     type="solid"
@@ -29,7 +30,7 @@ export default class SettingsScreen extends React.Component {
     try {
       //AsyncStorage.getItem('token');
       AsyncStorage.removeItem('token');
-      this.props.navigation.navigate("SignedOut"); // nefunguje navigace do SignedOut
+      this.props.navigation.navigate("SignedOut");
     } catch (error) {
       console.log('logout err: ' + error.message);
     }
