@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Button, Text, View, StyleSheet, TextInput, AsyncStorage, TouchableOpacity, ImageBackground } from 'react-native';
 import registerForPushNotificationsAsync from '../NotificationsScreen/PushNotifications.js';
+import Notify from '../NotificationsScreen/Notify';
+import User from './User';
 
 
 export default class LoginScreen extends React.Component{
@@ -33,6 +35,7 @@ export default class LoginScreen extends React.Component{
                       this.setState({ response: json.message });
                       if(json.error == false && json.user.id != null && json.user.token != null)
                       {
+                          Notify.currentUser = new User(json.user.id, json.user.firstname, json.user.lastname, json.user.email)
                           this.props.navigation.navigate("SignedIn");
                       }
                   })
@@ -106,6 +109,7 @@ export default class LoginScreen extends React.Component{
                     ["userID", json.user.id.toString()] 
                   ]);
                   registerForPushNotificationsAsync(this.state.email);
+                  Notify.currentUser = new User(json.user.id, json.user.firstname, json.user.lastname, json.user.email)
                   this.props.navigation.navigate("SignedIn");
 
                 }

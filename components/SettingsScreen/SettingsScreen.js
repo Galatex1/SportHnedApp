@@ -1,25 +1,22 @@
 import React from 'react';
-import {Button, Text, View, AsyncStorage, TextInput, TouchableOpacity, StyleSheet} from 'react-native';
+import {Button, Text, View, AsyncStorage, TextInput, TouchableOpacity, StyleSheet, Image} from 'react-native';
 import Notify from "../NotificationsScreen/Notify.js"
 import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
 
 export default class SettingsScreen extends React.Component {
   render() {
     return (
-        <View style={styles.hlavni}>
-          <View style={styles.middle}>
-            <View style={{margin:10}}>
-              <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <Text>{Notify.currentUser.surname}</Text>
-                <Text>{Notify.currentUser.name}</Text>
-                <Button
-                    title="Odhlásit se"
-                    type="solid"
-                    color= "#f00"
-                    backgroundColor="#fff"
-                    onPress={ () => this.onLogout() }
-                />
-              </View>
+        <View style={styles.container}>
+          <View style={styles.header}></View>
+          <Image style={styles.avatar} source={require('../../assets/profilepicblank.jpg')}/>
+          <View style={styles.body}>
+            <View style={styles.bodyContent}>
+              <Text style={styles.name}>{Notify.currentUser.name} {Notify.currentUser.surname}</Text>
+              <Text style={styles.info}>Fotbal / Běh</Text>
+              <Text style={styles.description}>Popis</Text>
+              <TouchableOpacity style={styles.buttonContainer} onPress={ () => this.onLogout() }>
+                <Text>Odhlásit se</Text>
+              </TouchableOpacity>
             </View>
           </View>
         </View>
@@ -38,57 +35,55 @@ export default class SettingsScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  hlavni:{
+  header:{
+    backgroundColor: "#059B4B",
+    height: 150,
+  },
+  avatar: {
+    width: 130,
+    height: 130,
+    borderRadius: 63,
+    borderWidth: 4,
+    borderColor: "grey",
+    marginBottom: 10,
+    alignSelf: 'flex-start',
+    position: 'absolute',
+    marginTop: 80,
+    marginLeft: 20
+  },
+  body:{
+    marginTop: 40,
+  },
+  bodyContent: {
     flex: 1,
-    width: '100%',
-    flexDirection: 'column',
     alignItems: 'center',
+    padding: 30,
+  },
+  name:{
+    fontSize:28,
+    color: "#696969",
+    fontWeight: "600"
+  },
+  info:{
+    fontSize:16,
+    color: "#04C10B",
+    marginTop:10
+  },
+  description:{
+    fontSize:16,
+    color: "#404040",
+    marginTop:10,
+    textAlign: 'center'
+  },
+  buttonContainer: {
+    marginTop:10,
+    height:45,
+    flexDirection: 'row',
     justifyContent: 'center',
-  },
-  bottom: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    marginBottom: 36
-  },
-  middle: {
-    flex: 4,
-    width: '100%',
-    justifyContent: 'center',
-    flexDirection: 'column',
     alignItems: 'center',
-    marginBottom: 36
+    marginBottom:20,
+    width:250,
+    borderRadius:30,
+    backgroundColor: "#04C10B",
   },
-  textInput:{
-    height: 43,
-    width: '75%',
-    fontSize: 14,
-    borderRadius: 5,
-    borderWidth: 1,
-    borderColor: '#eaeaea',
-    backgroundColor: '#fafafa',
-    paddingLeft: 10,
-    marginLeft: 15,
-    marginRight: 15,
-    marginTop: 5,
-    marginBottom: 5,
-  },
-  container: {
-    backgroundColor: '#e2dedb',
-    alignItems: 'center',
-    borderRadius: 10,
-    padding: 7,
-    paddingLeft: 10,
-    marginLeft: 15,
-    marginRight: 15,
-    marginTop: 10,
-    width: 165,
-  },
-  topText: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  text: {
-    fontSize: 15,
-    fontWeight: 'bold',
-  }
 });

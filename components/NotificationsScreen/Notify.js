@@ -1,8 +1,8 @@
-import {User} from  "../LoginScreen/User"
+import User from  "../LoginScreen/User"
 
 export default class Notify {
     static notifications = [];
-    static currentUser = new User();
+    static currentUser = new User(0, "", "", "");
 
 
     static getNotifications() {
