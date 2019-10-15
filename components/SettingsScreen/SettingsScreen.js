@@ -46,7 +46,6 @@ const styles = StyleSheet.create({
     borderWidth: 4,
     borderColor: "grey",
     marginBottom: 10,
-    alignSelf: 'flex-start',
     position: 'absolute',
     marginTop: 80,
     marginLeft: 20
