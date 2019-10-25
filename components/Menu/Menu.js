@@ -86,7 +86,7 @@ const MainScreen = createBottomTabNavigator(
           activeTintColor: '#ffffff',
           inactiveTintColor: '#000000',
           style: {
-            backgroundColor: '#8CDE23',
+            backgroundColor: '#04C10B',
           },
         },
         
